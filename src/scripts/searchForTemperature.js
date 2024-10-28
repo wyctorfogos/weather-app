@@ -1,13 +1,14 @@
 document.getElementById("button").addEventListener("click", async function(event) {
-    event.preventDefault(); // Evita o reload da página ao clicar no botão
+    event.preventDefault();
 
     const cityName = document.getElementById("search").value;
     
     // Obtém a temperatura da cidade informada
     const temperature = await searchForTemperature(cityName);
 
-    // Exibe a temperatura no textarea
-    document.getElementById("temperature").value = temperature ? `Temperature in ${cityName}: ${temperature}°C` : "City not found.";
+    // Atualiza o conteúdo do novo div para exibir a temperatura
+    document.getElementById("temperature-display").textContent = 
+        temperature ? `Temperature in ${cityName}: ${temperature}°C` : "City not found.";
 });
 
 // Função para buscar a latitude e longitude e, em seguida, obter a temperatura
